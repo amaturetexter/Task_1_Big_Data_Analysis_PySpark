@@ -3,17 +3,17 @@ from pyspark.sql.functions import col, avg, year, month, to_timestamp
 
 # Step 1: Start Spark session
 spark = SparkSession.builder \
-    .appName("Air Quality India - Final Working Version") \
+    .appName("Air Quality India - Sample CSV Version") \
     .config("spark.driver.memory", "2g") \
     .getOrCreate()
 
-# Step 2: File paths
+# Step 2: File paths (now using _sample.csv files)
 base_path = "data/AirQualityIndia/"
 files = {
-    "city_day": f"{base_path}city_day.csv",
-    "city_hour": f"{base_path}city_hour.csv",
-    "station_day": f"{base_path}station_day.csv",
-    "station_hour": f"{base_path}station_hour.csv"
+    "city_day": f"{base_path}city_day_sample.csv",
+    "city_hour": f"{base_path}city_hour_sample.csv",
+    "station_day": f"{base_path}station_day_sample.csv",
+    "station_hour": f"{base_path}station_hour_sample.csv"
 }
 
 # Step 3: Column name sanitizer
@@ -62,4 +62,4 @@ for name, path in files.items():
 
 # Step 6: Stop Spark session
 spark.stop()
-print("\n✅ All datasets processed and exported successfully.")
+print("\n✅ All sample datasets processed and exported successfully.")
