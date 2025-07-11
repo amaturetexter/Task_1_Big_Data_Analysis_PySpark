@@ -1,0 +1,10 @@
+name: task1_pyspark_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pyspark
+  - pandas
+  - matplotlib
+  - seaborn

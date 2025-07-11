@@ -1,0 +1,11 @@
+# Ignore Python cache and bytecode
+__pycache__/
+*.pyc
+
+#Ignore Large outputs
+output/*.png
+output/*.csv
+
+#Ignore environment or system files
+.env
+.DS_Store
