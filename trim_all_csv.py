@@ -4,32 +4,33 @@ import os
 # Folder path
 base_path = 'data/AirQualityIndia'
 
-# CSV files to process
-csv_files = [
-    'city_day.csv',
-    'city_hour.csv',
-    'station_day.csv',
-    'station_hour.csv'
-]
+# Files and row limits
+csv_files = {
+    'city_day.csv': 20000,
+    'city_hour.csv': 8000,          # reduce more to keep under 50MB
+    'station_day.csv': 15000,
+    'station_hour.csv': 7000        # heavy file, lower row count
+}
 
-# Max rows to keep
-MAX_ROWS = 20000  # Reduced from 50,000 to ~20,000 for GitHub safety
+# Track how many were trimmed
+trimmed_files = 0
 
 # Trim each file
-for filename in csv_files:
+for filename, max_rows in csv_files.items():
     input_path = os.path.join(base_path, filename)
     output_filename = filename.replace('.csv', '_sample.csv')
     output_path = os.path.join(base_path, output_filename)
 
     if os.path.exists(input_path):
-        print(f"📂 Trimming: {filename}")
+        print(f"📂 Trimming: {filename} → {max_rows} rows")
         try:
-            df = pd.read_csv(input_path, nrows=MAX_ROWS)
+            df = pd.read_csv(input_path, nrows=max_rows)
             df.to_csv(output_path, index=False)
-            print(f"✅ Saved trimmed file → {output_path}")
+            print(f"✅ Saved: {output_filename} ({len(df)} rows)\n")
+            trimmed_files += 1
         except Exception as e:
-            print(f"❌ Error reading {filename}: {e}")
+            print(f"❌ Error reading {filename}: {e}\n")
     else:
-        print(f"⚠️ File not found: {filename}")
+        print(f"⚠️ Skipped (not found): {filename}\n")
 
-print("\n✅ All CSVs trimmed to 20,000 rows and saved.")
+print(f"\n✅ Done! {trimmed_files} file(s) saved as *_sample.csv")
