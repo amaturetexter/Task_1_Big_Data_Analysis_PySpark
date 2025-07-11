@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-# Folder containing the original large CSVs
+# Folder path
 base_path = 'data/AirQualityIndia'
 
 # CSV files to process
@@ -12,10 +12,10 @@ csv_files = [
     'station_hour.csv'
 ]
 
-# Number of rows to keep in each trimmed file
-MAX_ROWS = 50000
+# Max rows to keep
+MAX_ROWS = 20000  # Reduced from 50,000 to ~20,000 for GitHub safety
 
-# Create smaller versions of each file
+# Trim each file
 for filename in csv_files:
     input_path = os.path.join(base_path, filename)
     output_filename = filename.replace('.csv', '_sample.csv')
@@ -32,4 +32,4 @@ for filename in csv_files:
     else:
         print(f"⚠️ File not found: {filename}")
 
-print("\n✅ All CSVs processed. Sample files are ready.")
+print("\n✅ All CSVs trimmed to 20,000 rows and saved.")
