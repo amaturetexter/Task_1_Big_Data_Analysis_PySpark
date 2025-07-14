@@ -62,7 +62,7 @@ To demonstrate the scalability and efficiency of big data tools by performing an
 
 A separate script `visualize_app.py` was created using **Matplotlib** and **Seaborn** to plot AQI trends (line & bar graphs) for exploratory data analysis. These visuals aid in understanding seasonal pollution patterns and comparing city-wise AQI levels.
 
-## 📝 Detailed Task Description
+## 📝 Task Description
 
 As part of the self-paced Data Analytics Virtual Internship at CODTECH IT SOLUTIONS, I was assigned a task focused on **Big Data Analysis using PySpark**. The goal was to handle a large, real-world dataset related to air quality in India, and apply distributed computing techniques to extract meaningful insights.  
 
@@ -78,6 +78,9 @@ Lastly, I developed a separate visualization script `visualize_app.py` that load
 
 ## OUTPUT:
 
+https://github.com/user-attachments/assets/42085c0d-4e9d-4cc1-84e0-fe898a44c047
+
+https://github.com/user-attachments/assets/fec11002-0fd0-4099-83e1-3c279718ea16
 
 
 ## Conclusion
